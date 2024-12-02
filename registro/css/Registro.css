@@ -1,0 +1,21 @@
+form{
+    
+    text-align: center;
+    align-items: center;
+    margin: auto;
+    width: 100%;
+    max-width: 500px;
+    border-radius: 20px;
+    border: 1px solid grey;
+    margin-top: 60px;
+    padding: 15px;
+}
+
+label{
+    color:rgb(53, 74, 196);
+}
+
+a{
+    margin: 20px;
+    text-decoration: none;
+}
