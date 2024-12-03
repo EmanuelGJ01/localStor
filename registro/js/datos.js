@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
     const form = document.querySelector("form");
     const tableBody = document.querySelector("tbody");  
-    let editIndex = -1; // Variable para almacenar el índice del usuario a editar
+    let editIndex = 1; // Variable para almacenar el índice del usuario a editar
 
     // Cargar los usuarios desde el localStorage
     const loadTableData = () => {
@@ -12,13 +12,12 @@ document.addEventListener("DOMContentLoaded", () => {
     // Función para guardar un nuevo usuario
     const saveUser = (user) => {
         const users = JSON.parse(localStorage.getItem("users")) || [];
-        if (editIndex === -1) {
-            // Si no estamos editando, agregamos el nuevo usuario
+        if (editIndex === 1) {
             users.push(user);
         } else {
             // Si estamos editando, actualizamos el usuario existente
             users[editIndex] = user;
-            editIndex = -1; // Resetear índice después de editar
+            editIndex = 1; // Resetear índice después de editar
         }
         localStorage.setItem("users", JSON.stringify(users));
         renderTable(users);
@@ -44,7 +43,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 <td>${user.apellido}</td>
                 <td>${user.edad}</td>
                 <td>
-                    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#newUserModal" onclick="consultUser(${index})">Consultar</button>
+                    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#Consult" onclick="consultUser(${index})">Consultar</button>
                     <button class="btn btn-danger" onclick="deleteUser(${index})">Eliminar</button>
                     <button class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#newUserModal" onclick="editUser(${index})">Editar</button>
                 </td>
@@ -87,10 +86,10 @@ document.addEventListener("DOMContentLoaded", () => {
         const users = JSON.parse(localStorage.getItem("users")) || [];
         const user = users[index];
         if (user) {
-            document.getElementById("Email").value = user.email;
-            document.getElementById("Nombre").value = user.nombre;
-            document.getElementById("Apellido").value = user.apellido;
-            document.getElementById("Edad").value = user.edad;
+            document.getElementById("EmailConsult").value = user.email;
+            document.getElementById("NombreConsult").value = user.nombre;
+            document.getElementById("ApellidoConsult").value = user.apellido;
+            document.getElementById("EdadConsult").value = user.edad;
         }
     };
 
